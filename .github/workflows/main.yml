@@ -1,22 +1,39 @@
 name: Build Vite For Github Pages
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    branches: [master]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Starting
-        run: echo Hello, world!
-      - name: Run a multi-line script
+      - name: CI - Checkout and Node
+        uses: actions/checkout@v3
+        uses: actions/setup-node@v2
+        with:
+          node-version: '17'
+
+      - name: CI - Generate Static Files
+        - run: |
+          npm ci
+          npm run build
+
+      - name: CI - Init dist repo and commit
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-      - name: Testing checkout
+          cd dist
+          git init
+          git add -A
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m 'automatic build'
+
+      - name: CI - Folder Lookup
         run: ls -a
+      
+      - name: CD - Force push to deployment branch
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          force: true
+          directory: ./dist
