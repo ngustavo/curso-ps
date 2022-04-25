@@ -1,0 +1,53 @@
+/* .main {
+  & h1 {
+    @apply underline;
+  }
+} */
+
+@font-face {
+  font-family: "BorisBlackBloxx";
+  src: url("../fonts/BorisBlackBloxx.ttf");
+}
+
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../img/bg_cursodeps.png");
+  background-size: cover;
+  background-position: center;
+}
+
+h1 {
+  @apply text-5xl;
+}
+
+h2 {
+  @apply text-4xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply text-shadow-xl;
+}
+
+.main {
+  position: relative;
+  padding: 2rem;
+}
+
+.main::before {
+  content: "";
+  z-index: -1;
+  margin-top: -2rem;
+  margin-left: -2rem;
+  @apply absolute w-18rem h-full bg-red-600;
+}
