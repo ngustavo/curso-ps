@@ -20,18 +20,6 @@ jobs:
           npm ci
           npm run build
 
-      - name: CI - Init dist repo and commit
-        run: |
-          cd dist
-          git init
-          git add -A
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -m 'automatic build'
-
-      - name: CI - Folder Lookup
-        run: ls -a
-
       - name: CD - Push to deployment branch
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
