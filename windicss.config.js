@@ -1,6 +1,6 @@
 export default {
   extract: {
-    include: ["*.{html,js}"],
+    include: ["**/*.{html,js}"],
     exclude: ["node_modules", ".git"],
   },
   theme: {

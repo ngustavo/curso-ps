@@ -1,19 +1,29 @@
-/* .main {
-  & h1 {
-    @apply underline;
-  }
-} */
-
 @font-face {
   font-family: "BorisBlackBloxx";
   src: url("../fonts/BorisBlackBloxx.ttf");
 }
 
-body {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("../img/bg_cursodeps.png");
-  background-size: cover;
-  background-position: center;
+.app__bg-img {
+  @apply h-screen bg-cover bg-center bg-fixed;
+}
+
+.app__bg-img:nth-child(1) {
+  background-image: url("../img/bg_cursodeps.png");
+}
+
+.app__bg-img:nth-child(2) {
+  background-image: url("../img/bg2_cursodeps.png");
+}
+
+.app__content {
+  background-color: rgba(0, 0, 0, 0.3);
+  @apply fixed top-0 w-screen h-screen flex flex-col;
+}
+
+h1,
+h2,
+h3 {
+  @apply text-shadow-xl;
 }
 
 h1 {
@@ -28,23 +38,12 @@ h3 {
   @apply text-2xl;
 }
 
-h4 {
-  @apply text-xl;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  @apply text-shadow-xl;
-}
-
-.main {
+article {
   position: relative;
   padding: 2rem;
 }
 
-.main::before {
+article::before {
   content: "";
   z-index: -1;
   margin-top: -2rem;
