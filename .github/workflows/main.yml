@@ -7,8 +7,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: CI - Checkout and Node
+      - name: CI - Checkout
         uses: actions/checkout@v3
+      
+      - name: CI - Node
         uses: actions/setup-node@v2
         with:
           node-version: '17'
