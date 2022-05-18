@@ -27,20 +27,31 @@ h3 {
 }
 
 h1 {
-  @apply lg:text-5xl md:text-3xl;
+  @apply text-5xl <lg:text-2xl;
 }
 
 h2 {
-  @apply lg:text-4xl md:text-2xl;
+  @apply text-4xl <lg:text-1xl;
 }
 
 h3 {
-  @apply lg:text-2xl md:text-lg;
+  @apply text-2xl <lg:text-base;
+}
+
+header {
+  @apply flex items-center justify-end gap-4 h-16 pr-20 font-bold;
+}
+
+main {
+  @apply flex <lg:flex-wrap items-center justify-evenly flex-1;
+}
+
+aside {
+  @apply w-md <lg:w-sm;
 }
 
 article {
-  position: relative;
-  padding: 2rem;
+  @apply relative p-8 <lg:w-sm;
 }
 
 article::before {
